@@ -10,7 +10,8 @@ SELECT m.title, count(r.rating) as countOfRatings
 FROM movies m
 JOIN ratings r
 	ON m.movieid = r.movieid
-GROUP BY m.title;
+GROUP BY m.title
+ORDER BY countOfRatings DESC;
 
 -- #3 Get the total movies for a genre
 
@@ -18,7 +19,8 @@ SELECT g.genres, count(g.genres)
 FROM genre g
 JOIN movies m
 	ON m.genres LIKE concat('%', g.genres, '%')
-GROUP BY g.genres;
+GROUP BY g.genres
+ORDER BY count DESC;
 
 -- #4 Get the average rating for a user
 SELECT userid, avg(rating) AS average_rating
